@@ -1,0 +1,39 @@
+{
+  "name": "nasa-orrery",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@pmndrs/assets": "1.6.0",
+    "@pmndrs/branding": "0.0.8",
+    "@react-three/drei": "9.108.3",
+    "@react-three/fiber": "8.16.8",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/three": "0.152.1",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.9.0",
+    "eslint-plugin-react": "^7.35.0",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.9",
+    "globals": "^15.9.0",
+    "postcss": "^8.4.47",
+    "react-router-dom": "^6.26.2",
+    "tailwindcss": "^3.4.12",
+    "three": "0.166.1",
+    "vite": "^5.4.1",
+    "wouter": "2.11.0"
+  }
+}
