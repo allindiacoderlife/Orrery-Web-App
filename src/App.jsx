@@ -7,7 +7,7 @@ const App = () => {
    <>
     <Router>
       <Routes>
-        <Route path="/Nasa" element={<Project />} />
+        <Route path="/Orrery-Web-App" element={<Project />} />
       </Routes>
     </Router>
    </>
