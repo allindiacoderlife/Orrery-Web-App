@@ -5,20 +5,25 @@ import {
   useCursor,
   MeshPortalMaterial,
   CameraControls,
+  useGLTF,
+  useAnimations,
   Gltf,
   Text,
   Preload,
   Environment,
+  OrbitControls,
 } from "@react-three/drei";
 import { useRoute, useLocation } from "wouter";
 import { easing, geometry } from "maath";
 import { suspend } from "suspend-react";
+import "./Project.css";
 
 extend(geometry);
 const regular = import("@pmndrs/assets/fonts/inter_regular.woff");
 const medium = import("@pmndrs/assets/fonts/inter_medium.woff");
 
 const Project = () => {
+  const ref = useRef();
   const [, params] = useRoute("/item/:id");
   const [, setLocation] = useLocation();
   return (
@@ -47,12 +52,13 @@ const Project = () => {
         <Frame id="02" name={`Orre\nry`} author="Omar Faruq Tawsif">
           <Environment
             files="Galaxy.hdr"
-            ground={{ scale: 100}}
+            // ground={{ scale: 100 }}
             backgroundRotation={[0, Math.PI / 2, 0]}
             environmentIntensity={2}
-            environmentRotation={[0,Math.PI/2,0]}
+            environmentRotation={[0, Math.PI / 2, 0]}
           />
-          <Gltf src="Orrery.glb" position={[0, -1.5, -3]} />
+          <AnimatedModel />
+          {/* <Gltf src="Orrery1.glb" position={[0, -1.5, -3]} /> */}
         </Frame>
         <Frame
           id="03"
@@ -94,6 +100,24 @@ const Project = () => {
       </div>{" "}
     </>
   );
+};
+
+// Component to load and animate the GLTF model
+const AnimatedModel = () => {
+  const modelRef = useRef();
+  const { scene, animations } = useGLTF("Orrery1.glb");
+  const { actions } = useAnimations(animations, modelRef);
+
+  // Rotate the model on each frame
+  useFrame(() => {
+    // if (modelRef.current) {
+    //   modelRef.current.rotation.y += 0.01;
+    // }
+    // actions["SS orrery Y20-P03-00Action"].play();
+    // actions["SS orrery Y20-P08-00Action"].play();
+  });
+
+  return <primitive ref={modelRef} object={scene} position={[0, -1.5, -3]} />;
 };
 
 function Frame({
