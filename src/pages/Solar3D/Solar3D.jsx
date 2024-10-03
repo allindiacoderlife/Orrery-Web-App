@@ -605,7 +605,9 @@ const Solar3D = () => {
         <div className="controls">
           <button id="stop">Stop</button>
           <button id="start">Start</button>
-          <p>Grab and move mouse verticaly to change perspective</p>
+          <p className="text-white">
+            Grab and move mouse verticaly to change perspective
+          </p>
         </div>
       </div>
     </div>
