@@ -34,6 +34,14 @@ const Navbar = () => {
         >
           Projects
         </NavLink>
+        <NavLink 
+          to="/Orrery-Web-App/SolarSystem3D"
+          className={({ isActive }) =>
+            isActive ? "text-blue-500" : "text-black"
+          }
+        >
+          Solar 3D
+        </NavLink>
       </nav>
     </header>
   );
