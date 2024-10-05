@@ -15,32 +15,26 @@ const Navbar = () => {
         <NavLink
           to="/Orrery-Web-App/"
           className={({ isActive }) =>
-            isActive ? "text-blue-500" : "text-black"
-          }
-        >Home</NavLink>
-        <NavLink
-          to="/Orrery-Web-App/SolarSystem"
-          className={({ isActive }) =>
-            isActive ? "text-blue-500" : "text-black"
+            isActive ? "blue-gradient_text" : "text-blue-200"
           }
         >
-          Solar 2D
+          Home
         </NavLink>
         <NavLink
-          to="/Orrery-Web-App/Project"
+          to="/SolarSystem3D"
           className={({ isActive }) =>
-            isActive ? "text-blue-500" : "text-black"
-          }
-        >
-          Projects
-        </NavLink>
-        <NavLink 
-          to="/Orrery-Web-App/SolarSystem3D"
-          className={({ isActive }) =>
-            isActive ? "text-blue-500" : "text-black"
+            isActive ? "blue-gradient_text" : "text-blue-200"
           }
         >
           Solar 3D
+        </NavLink>
+        <NavLink
+          to="/Project"
+          className={({ isActive }) =>
+            isActive ? "blue-gradient_text" : "text-blue-200"
+          }
+        >
+          Projects
         </NavLink>
       </nav>
     </header>

@@ -853,19 +853,19 @@ const Solar3D = () => {
         <div className="controls" id="controls">
           <div className="gap-1 flex">
             <button
-              className={speedData ? "newbtn text-blue-500" : "newbtn text-white"}
+              className={speedData ? "newbtn blue-gradient_text" : "newbtn text-white"}
               onClick={() => handleActiveData("speed")}
             >
               Speed
             </button>
             <button
-              className={sizeData ? "newbtn text-blue-500" : "newbtn text-white"}
+              className={sizeData ? "newbtn blue-gradient_text" : "newbtn text-white"}
               onClick={() => handleActiveData("size")}
             >
               Size
             </button>
             <button
-              className={distanceData ? "newbtn text-blue-500" : "newbtn text-white"}
+              className={distanceData ? "newbtn blue-gradient_text" : "newbtn text-white"}
               onClick={() => handleActiveData("distance")}
             >
               Distance
@@ -878,7 +878,7 @@ const Solar3D = () => {
         <div className=" gap-2 flex fixed justify-center items-center bottom-0 right-0 left-0 ">
           <a
             className={
-              activeSun ? "text-blue-500 databtn" : "text-white databtn"
+              activeSun ? "blue-gradient_text databtn" : "text-white databtn"
             }
             onClick={() => handleActivePlanet("Sun")}
           >
@@ -886,7 +886,7 @@ const Solar3D = () => {
           </a>
           <a
             className={
-              activeMercury ? "text-blue-500 databtn" : "text-white databtn"
+              activeMercury ? "blue-gradient_text databtn" : "text-white databtn"
             }
             onClick={() => handleActivePlanet("Mercury")}
           >
@@ -894,7 +894,7 @@ const Solar3D = () => {
           </a>
           <a
             className={
-              activeVenus ? "text-blue-500 databtn" : "text-white databtn"
+              activeVenus ? "blue-gradient_text databtn" : "text-white databtn"
             }
             onClick={() => handleActivePlanet("Venus")}
           >
@@ -902,7 +902,7 @@ const Solar3D = () => {
           </a>
           <a
             className={
-              activeEarth ? "text-blue-500 databtn" : "text-white databtn"
+              activeEarth ? "blue-gradient_text databtn" : "text-white databtn"
             }
             onClick={() => handleActivePlanet("Earth")}
           >
@@ -910,7 +910,7 @@ const Solar3D = () => {
           </a>
           <a
             className={
-              activeMars ? "text-blue-500 databtn" : "text-white databtn"
+              activeMars ? "blue-gradient_text databtn" : "text-white databtn"
             }
             onClick={() => handleActivePlanet("Mars")}
           >
@@ -918,7 +918,7 @@ const Solar3D = () => {
           </a>
           <a
             className={
-              activeJupiter ? "text-blue-500 databtn" : "text-white databtn"
+              activeJupiter ? "blue-gradient_text databtn" : "text-white databtn"
             }
             onClick={() => handleActivePlanet("Jupiter")}
           >
@@ -926,7 +926,7 @@ const Solar3D = () => {
           </a>
           <a
             className={
-              activeSaturn ? "text-blue-500 databtn" : "text-white databtn"
+              activeSaturn ? "blue-gradient_text databtn" : "text-white databtn"
             }
             onClick={() => handleActivePlanet("Saturn")}
           >
@@ -934,7 +934,7 @@ const Solar3D = () => {
           </a>
           <a
             className={
-              activeUranus ? "text-blue-500 databtn" : "text-white databtn"
+              activeUranus ? "blue-gradient_text databtn" : "text-white databtn"
             }
             onClick={() => handleActivePlanet("Uranus")}
           >
@@ -942,7 +942,7 @@ const Solar3D = () => {
           </a>
           <a
             className={
-              activeNeptune ? "text-blue-500 databtn" : "text-white databtn"
+              activeNeptune ? "blue-gradient_text databtn" : "text-white databtn"
             }
             onClick={() => handleActivePlanet("Neptune")}
           >

@@ -37,19 +37,25 @@ const Project = () => {
         <color attach="background" args={["#f0f0f0"]} />
         <Frame
           id="01"
-          name={`pick\nles`}
-          author="Omar Faruq Tawsif"
-          bg="#e4cdac"
+          name={`Gala\nxy`}
+          // author="Omar Faruq Tawsif"
+          bg="black"
           position={[-1.15, 0, 0]}
           rotation={[0, 0.5, 0]}
         >
-          <Gltf
-            src="pickles_3d_version_of_hyuna_lees_illustration-transformed.glb"
-            scale={8}
-            position={[0, -0.7, -2]}
-          />
+          {/* <Gltf
+            src="solar.glb"
+            scale={1}
+            position={[0, -0.4, -3]}
+            rotation={[0.4, 0, -0.2]}
+          /> */}
+          <SolarAnimatedModel />
         </Frame>
-        <Frame id="02" name={`Orre\nry`} author="Omar Faruq Tawsif">
+        <Frame
+          id="02"
+          name={`Orre\nry`}
+          //  author="Omar Faruq Tawsif"
+        >
           <Environment
             files="Galaxy.hdr"
             // ground={{ scale: 100 }}
@@ -62,17 +68,15 @@ const Project = () => {
         </Frame>
         <Frame
           id="03"
-          name="still"
-          author="Omar Faruq Tawsif"
+          name="Earth"
+          // author="Omar Faruq Tawsif"
           bg="#d1d1ca"
           position={[1.15, 0, 0]}
           rotation={[0, -0.5, 0]}
         >
-          <Gltf
-            src="still_life_based_on_heathers_artwork-transformed.glb"
-            scale={2}
-            position={[0, -0.8, -4]}
-          />
+          <Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/venice_sunset_1k.hdr" />
+          {/* <Gltf src="earth_cartoon.glb" scale={2} position={[0, -0.8, -4]} /> */}
+          <AnimatedMod />
         </Frame>
         <Rig />
         <Preload all />
@@ -87,12 +91,19 @@ const Project = () => {
         }}
       >
         <a
-          style={{ position: "absolute", top: 40, left: 40, fontSize: "13px" }}
-          href="/Orrery-Web-App/"
+          style={{ position: "absolute", top: 90, left: 40, fontSize: "13px" }}
+          // href="/Orrery-Web-App/Project"
+          className="blue-gradient_text"
+          goback="true"
           onClick={() => setLocation("/")}
         >
           {params ? (
-            <button className="w-10 h-10 bg-red-400 rounded-full" />
+            <div
+              className="h-10 w-10 rounded-lg bg-white
+            flex items-center justify-center shadow-md font-bold"
+            >
+              <p className="blue-gradient_text">Back</p>
+            </div>
           ) : (
             "double click to enter portal"
           )}
@@ -113,11 +124,70 @@ const AnimatedModel = () => {
     // if (modelRef.current) {
     //   modelRef.current.rotation.y += 0.01;
     // }
-    // actions["SS orrery Y20-P03-00Action"].play();
-    // actions["SS orrery Y20-P08-00Action"].play();
+
+    Object.values(actions).forEach((action) => {
+      action.setEffectiveTimeScale(0.1); // Slow down the animation speed by half
+      action.play();
+    });
   });
 
   return <primitive ref={modelRef} object={scene} position={[0, -1.5, -3]} />;
+};
+
+const SolarAnimatedModel = () => {
+  const modelRef = useRef();
+  const { scene, animations } = useGLTF("solar.glb");
+  const { actions } = useAnimations(animations, modelRef);
+
+  // Rotate the model on each frame
+  useFrame(() => {
+    // if (modelRef.current) {
+    //   modelRef.current.rotation.y += 0.01;
+    // }
+
+    Object.values(actions).forEach((action) => {
+      action.setEffectiveTimeScale(0.1); // Slow down the animation speed by half
+      action.play();
+    });
+  });
+
+  return (
+    <primitive
+      ref={modelRef}
+      object={scene}
+      scale={1}
+      position={[0, -0.4, -3]}
+      rotation={[0.4, 0, -0.2]}
+    />
+  );
+};
+
+const AnimatedMod = () => {
+  const modelRef = useRef();
+  const { scene, animations } = useGLTF("earth_cartoon.glb");
+  const { actions } = useAnimations(animations, modelRef);
+
+  // Rotate the model on each frame
+  useFrame(() => {
+    if (modelRef.current) {
+      // modelRef.current.rotation.y += 0.01;
+    }
+
+    Object.values(actions).forEach((action) => {
+      action.setEffectiveTimeScale(0.1); // Slow down the animation speed by half
+      action.play();
+    });
+  });
+
+  return (
+    <primitive
+      ref={modelRef}
+      object={scene}
+      scale={1}
+      position={[0, -0.4, -3]}
+      rotation={[0.4, 0, -0.2]}
+    />
+  );
 };
 
 function Frame({

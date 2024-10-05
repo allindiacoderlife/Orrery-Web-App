@@ -2,11 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  scroll-behavior: smooth;
+}
+
 @layer utilities {
-    .header {
-      @apply flex justify-between items-center sm:px-16 px-8 py-4 max-w-5xl mx-auto absolute top-0 bg-transparent z-10 right-0 left-0;
-    }
-    .blue-gradient_text {
-      @apply bg-gradient-to-r from-[#00c6ff] to-[#0072ff] bg-clip-text text-transparent;
-    }
+  .header {
+    @apply flex justify-between items-center sm:px-16 px-8 py-4 max-w-5xl mx-auto absolute top-0 bg-transparent z-10 right-0 left-0;
   }
+  .blue-gradient_text {
+    @apply bg-gradient-to-r from-[#00c6ff] to-[#0072ff] bg-clip-text text-transparent;
+  }
+  .blue-gradient {
+    @apply bg-gradient-to-r from-[#00c6ff] to-[#0072ff];
+  }
+}
+
+.home{
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+.project{
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}

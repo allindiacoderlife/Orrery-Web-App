@@ -63,11 +63,14 @@ const AnimatedModel = () => {
   
     // Rotate the model on each frame
     useFrame(() => {
-      // if (modelRef.current) {
-        modelRef.current.rotation.y += 0.01;
-      // }
-      actions["Animation"].play();
-      // actions["SS orrery Y20-P08-00Action"].play();
+      if (modelRef.current) {
+        modelRef.current.rotation.y += 0.005;
+        modelRef.current.rotation.x += 0.005;
+      }
+      Object.values(actions).forEach((action) => {
+        action.setEffectiveTimeScale(0.5); // Slow down the animation speed by half
+        action.play();
+      });
     });
   
     return <primitive ref={modelRef} object={scene} position={[0, -1.5, -3]}/>;
