@@ -2,6 +2,22 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Solar3D.css";
 
 const Solar3D = () => {
+  const [isactive, setActive] = useState({});
+
+  const [activeSun, setActiveSun] = useState(false);
+  const [activeMercury, setActiveMercury] = useState(false);
+  const [activeVenus, setActiveVenus] = useState(false);
+  const [activeEarth, setActiveEarth] = useState(true);
+  const [activeMars, setActiveMars] = useState(false);
+  const [activeJupiter, setActiveJupiter] = useState(false);
+  const [activeSaturn, setActiveSaturn] = useState(false);
+  const [activeUranus, setActiveUranus] = useState(false);
+  const [activeNeptune, setActiveNeptune] = useState(false);
+
+  const [speedData, setSpeedData] = useState(true);
+  const [sizeData, setSizeData] = useState(false);
+  const [distanceData, setDistanceData] = useState(false);
+
   const [verticalKaificent, setVerticalKaificent] = useState(0.2);
   const [deltaMerc, setDeltaMerc] = useState(0);
   const [deltaVenus, setDeltaVenus] = useState(0);
@@ -485,6 +501,31 @@ const Solar3D = () => {
     neptuneCircle.style.height = `${Rneptune * 2 * verticalKaificent}px`;
   };
 
+  const handleActiveData = (data) => {
+    setSpeedData(false);
+    setSizeData(false);
+    setDistanceData(false);
+    if (data === "speed") {
+      setSpeedData(true);
+    } else if (data === "size") {
+      setSizeData(true);
+    } else if (data === "distance") {
+      setDistanceData(true);
+    }
+  };
+
+  const handleActivePlanet = (planet) => {
+    setActiveSun(planet === "Sun");
+    setActiveMercury(planet === "Mercury");
+    setActiveVenus(planet === "Venus");
+    setActiveEarth(planet === "Earth");
+    setActiveMars(planet === "Mars");
+    setActiveJupiter(planet === "Jupiter");
+    setActiveSaturn(planet === "Saturn");
+    setActiveUranus(planet === "Uranus");
+    setActiveNeptune(planet === "Neptune");
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       movePlanets();
@@ -516,10 +557,56 @@ const Solar3D = () => {
           <div className="uranus_circle"></div>
           <div className="neptune_circle"></div>
         </div>
-
         <div id="planets">
-          <div className="planet1 suns" ref={sunRef}></div>
+          <div className="planet1 suns" ref={sunRef}>
+          {activeSun ? (
+              <dl class="info">
+                <dt>Sun</dt>
+                  {
+                    speedData ? (
+                      <dd>
+                      <p>0 km/h</p>
+                      <span>Orbit Velocity</span>
+                      </dd>
+                    ) : sizeData ? (
+                      <dd>
+                      <p>4,370,005 km</p>
+                      <span>Equatorial Circumference</span>
+                      </dd>
+                    ) : distanceData ? (
+                      <dd>
+                      <p>149,598,262 km</p>
+                      <span>From Earth</span>
+                      </dd>
+                    ) : null
+                  }
+              </dl>
+            ) : null}
+          </div>
           <div className="mercury_container" ref={mercuryRef}>
+            {activeMercury ? (
+              <dl class="info">
+                <dt>Mercury</dt>
+                  {
+                    speedData ? (
+                      <dd>
+                      <p>170,503 km/h</p>
+                      <span>Orbit Velocity</span>
+                      </dd>
+                    ) : sizeData ? (
+                      <dd>
+                      <p>4,370,005 km</p>
+                      <span>Equatorial Circumference</span>
+                      </dd>
+                    ) : distanceData ? (
+                      <dd>
+                      <p>57,909,227 km</p>
+                      <span>From Sun</span>
+                      </dd>
+                    ) : null
+                  }
+              </dl>
+            ) : null}
             <div className="gif_mercury"></div>
             <div className="shadow_mercury">
               <div className="light"></div>
@@ -527,6 +614,29 @@ const Solar3D = () => {
             </div>
           </div>
           <div className="venus_container" ref={venusRef}>
+          {activeVenus ? (
+              <dl class="info">
+                <dt>Venus</dt>
+                  {
+                    speedData ? (
+                      <dd>
+                      <p>126,074 km/h</p>
+                      <span>Orbit Velocity</span>
+                      </dd>
+                    ) : sizeData ? (
+                      <dd>
+                      <p>38,024 km</p>
+                      <span>Equatorial Circumference</span>
+                      </dd>
+                    ) : distanceData ? (
+                      <dd>
+                      <p>108,209,475 km</p>
+                      <span>From Sun</span>
+                      </dd>
+                    ) : null
+                  }
+              </dl>
+            ) : null}
             <div className="gif_venus"></div>
             <div className="shadow_venus">
               <div className="light"></div>
@@ -535,6 +645,29 @@ const Solar3D = () => {
           </div>
           <div className="earth_moon_container" ref={earthRef}>
             <div className="earth_container">
+            {activeEarth ? (
+              <dl class="info">
+                <dt>Earth</dt>
+                  {
+                    speedData ? (
+                      <dd>
+                      <p>107,218 km/h</p>
+                      <span>Orbit Velocity</span>
+                      </dd>
+                    ) : sizeData ? (
+                      <dd>
+                      <p>40,030 km</p>
+                      <span>Equatorial Circumference</span>
+                      </dd>
+                    ) : distanceData ? (
+                      <dd>
+                      <p>149,598,262 km</p>
+                      <span>From Sun</span>
+                      </dd>
+                    ) : null
+                  }
+              </dl>
+            ) : null}
               <div className="gif_earth">
                 <img src="https://res.cloudinary.com/yerevan/image/upload/v1484080036/earth_saibbo.gif" />
               </div>
@@ -550,6 +683,29 @@ const Solar3D = () => {
             </div>
           </div>
           <div className="mars_container" ref={marsRef}>
+          {activeMars ? (
+              <dl class="info">
+                <dt>Mars</dt>
+                  {
+                    speedData ? (
+                      <dd>
+                      <p>86,677 km/h</p>
+                      <span>Orbit Velocity</span>
+                      </dd>
+                    ) : sizeData ? (
+                      <dd>
+                      <p>21,296 km</p>
+                      <span>Equatorial Circumference</span>
+                      </dd>
+                    ) : distanceData ? (
+                      <dd>
+                      <p>227,943,824 km</p>
+                      <span>From Sun</span>
+                      </dd>
+                    ) : null
+                  }
+              </dl>
+            ) : null}
             <div className="gif_mars"></div>
             <div className="shadow_mars">
               <div className="light"></div>
@@ -557,6 +713,29 @@ const Solar3D = () => {
             </div>
           </div>
           <div className="jupiter_container" ref={jupiterRef}>
+          {activeJupiter ? (
+              <dl class="info">
+                <dt>Jupiter</dt>
+                  {
+                    speedData ? (
+                      <dd>
+                      <p>47,002 km/h</p>
+                      <span>Orbit Velocity</span>
+                      </dd>
+                    ) : sizeData ? (
+                      <dd>
+                      <p>439,263 km</p>
+                      <span>Equatorial Circumference</span>
+                      </dd>
+                    ) : distanceData ? (
+                      <dd>
+                      <p>778,340,821 km</p>
+                      <span>From Sun</span>
+                      </dd>
+                    ) : null
+                  }
+              </dl>
+            ) : null}
             <div className="gif_jupiter">
               <img src="https://res.cloudinary.com/yerevan/image/upload/v1484080036/jupiter_cxhuh5.gif" />
             </div>
@@ -567,6 +746,29 @@ const Solar3D = () => {
           </div>
           <div className="saturn_ring_container" ref={saturnRef}>
             <div className="saturn_container">
+            {activeSaturn ? (
+              <dl class="info">
+                <dt>Saturn</dt>
+                  {
+                    speedData ? (
+                      <dd>
+                      <p>34,701 km/h</p>
+                      <span>Orbit Velocity</span>
+                      </dd>
+                    ) : sizeData ? (
+                      <dd>
+                      <p>365,882 km</p>
+                      <span>Equatorial Circumference</span>
+                      </dd>
+                    ) : distanceData ? (
+                      <dd>
+                      <p>1,426,666,422 km</p>
+                      <span>From Sun</span>
+                      </dd>
+                    ) : null
+                  }
+              </dl>
+            ) : null}
               <div className="gif_saturn">
                 <img src="https://res.cloudinary.com/yerevan/image/upload/v1484080036/jupiter_cxhuh5.gif" />
               </div>
@@ -587,6 +789,29 @@ const Solar3D = () => {
             </div>
           </div>
           <div className="uranus_container" ref={uranusRef}>
+          {activeUranus ? (
+              <dl class="info">
+                <dt>Saturn</dt>
+                  {
+                    speedData ? (
+                      <dd>
+                      <p>24,477 km/h</p>
+                      <span>Orbit Velocity</span>
+                      </dd>
+                    ) : sizeData ? (
+                      <dd>
+                      <p>159,354 km</p>
+                      <span>Equatorial Circumference</span>
+                      </dd>
+                    ) : distanceData ? (
+                      <dd>
+                      <p>2,870,658,186 km</p>
+                      <span>From Sun</span>
+                      </dd>
+                    ) : null
+                  }
+              </dl>
+            ) : null}
             <div className="gif_uranus"></div>
             <div className="shadow_uranus">
               <div className="light"></div>
@@ -594,6 +819,29 @@ const Solar3D = () => {
             </div>
           </div>
           <div className="neptune_container" ref={neptuneRef}>
+          {activeNeptune ? (
+              <dl class="info">
+                <dt>Neptune</dt>
+                  {
+                    speedData ? (
+                      <dd>
+                      <p>19,566 km/h</p>
+                      <span>Orbit Velocity</span>
+                      </dd>
+                    ) : sizeData ? (
+                      <dd>
+                      <p>154,704 km</p>
+                      <span>Equatorial Circumference</span>
+                      </dd>
+                    ) : distanceData ? (
+                      <dd>
+                      <p>4,498,396,441 km</p>
+                      <span>From Sun</span>
+                      </dd>
+                    ) : null
+                  }
+              </dl>
+            ) : null}
             <div className="gif_neptune"></div>
             <div className="shadow_neptune">
               <div className="light"></div>
@@ -602,12 +850,104 @@ const Solar3D = () => {
           </div>
         </div>
 
-        <div className="controls">
-          <button id="stop">Stop</button>
-          <button id="start">Start</button>
+        <div className="controls" id="controls">
+          <div className="gap-1 flex">
+            <button
+              className={speedData ? "newbtn text-blue-500" : "newbtn text-white"}
+              onClick={() => handleActiveData("speed")}
+            >
+              Speed
+            </button>
+            <button
+              className={sizeData ? "newbtn text-blue-500" : "newbtn text-white"}
+              onClick={() => handleActiveData("size")}
+            >
+              Size
+            </button>
+            <button
+              className={distanceData ? "newbtn text-blue-500" : "newbtn text-white"}
+              onClick={() => handleActiveData("distance")}
+            >
+              Distance
+            </button>
+          </div>
           <p className="text-white">
             Grab and move mouse verticaly to change perspective
           </p>
+        </div>
+        <div className=" gap-2 flex fixed justify-center items-center bottom-0 right-0 left-0 ">
+          <a
+            className={
+              activeSun ? "text-blue-500 databtn" : "text-white databtn"
+            }
+            onClick={() => handleActivePlanet("Sun")}
+          >
+            Sun
+          </a>
+          <a
+            className={
+              activeMercury ? "text-blue-500 databtn" : "text-white databtn"
+            }
+            onClick={() => handleActivePlanet("Mercury")}
+          >
+            Mercury
+          </a>
+          <a
+            className={
+              activeVenus ? "text-blue-500 databtn" : "text-white databtn"
+            }
+            onClick={() => handleActivePlanet("Venus")}
+          >
+            Venus
+          </a>
+          <a
+            className={
+              activeEarth ? "text-blue-500 databtn" : "text-white databtn"
+            }
+            onClick={() => handleActivePlanet("Earth")}
+          >
+            Earth
+          </a>
+          <a
+            className={
+              activeMars ? "text-blue-500 databtn" : "text-white databtn"
+            }
+            onClick={() => handleActivePlanet("Mars")}
+          >
+            Mars
+          </a>
+          <a
+            className={
+              activeJupiter ? "text-blue-500 databtn" : "text-white databtn"
+            }
+            onClick={() => handleActivePlanet("Jupiter")}
+          >
+            Jupiter
+          </a>
+          <a
+            className={
+              activeSaturn ? "text-blue-500 databtn" : "text-white databtn"
+            }
+            onClick={() => handleActivePlanet("Saturn")}
+          >
+            Saturn
+          </a>
+          <a
+            className={
+              activeUranus ? "text-blue-500 databtn" : "text-white databtn"
+            }
+            onClick={() => handleActivePlanet("Uranus")}
+          >
+            Uranus
+          </a>
+          <a
+            className={
+              activeNeptune ? "text-blue-500 databtn" : "text-white databtn"
+            }
+            onClick={() => handleActivePlanet("Neptune")}
+          >
+            Neptune
+          </a>
         </div>
       </div>
     </div>

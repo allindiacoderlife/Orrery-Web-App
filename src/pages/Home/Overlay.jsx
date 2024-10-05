@@ -74,6 +74,7 @@ export function Overlay() {
                     Get Started Now.
                   </p>
                   <button
+                    className="buttonbtn"
                     style={{ background: snap.color }}
                     onClick={() => (state.intro = false)}
                   >
