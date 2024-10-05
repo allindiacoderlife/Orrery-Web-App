@@ -19,22 +19,15 @@ const Earth = () => {
   return (
     <Canvas className="bg-white">
       <ambientLight intensity={0.5} />
-      {/* <Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/potsdamer_platz_1k.hdr" /> */}
       <Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/venice_sunset_1k.hdr" />
       <CameraRig>
         <Center>
-            <AnimatedModel />
-          {/* <Gltf
-            src="earth.glb"
-            scale={0.9}
-          /> */}
+          <AnimatedModel />
         </Center>
       </CameraRig>
     </Canvas>
   );
 };
-
-
 
 const CameraRig = ({ children }) => {
   const group = useRef();
@@ -57,24 +50,23 @@ const CameraRig = ({ children }) => {
 };
 
 const AnimatedModel = () => {
-    const modelRef = useRef();
-    const { scene , animations } = useGLTF("earth.glb");
-    const { actions } = useAnimations(animations , modelRef);
-  
-    // Rotate the model on each frame
-    useFrame(() => {
-      if (modelRef.current) {
-        modelRef.current.rotation.y += 0.005;
-        modelRef.current.rotation.x += 0.005;
-      }
-      Object.values(actions).forEach((action) => {
-        action.setEffectiveTimeScale(0.5); // Slow down the animation speed by half
-        action.play();
-      });
+  const modelRef = useRef();
+  const { scene, animations } = useGLTF("earth.glb");
+  const { actions } = useAnimations(animations, modelRef);
+
+  // Rotate the model on each frame
+  useFrame(() => {
+    if (modelRef.current) {
+      modelRef.current.rotation.y += 0.005;
+      modelRef.current.rotation.x += 0.005;
+    }
+    Object.values(actions).forEach((action) => {
+      action.setEffectiveTimeScale(0.5); // Slow down the animation speed by half
+      action.play();
     });
-  
-    return <primitive ref={modelRef} object={scene} position={[0, -1.5, -3]}/>;
-  };
-  
+  });
+
+  return <primitive ref={modelRef} object={scene} position={[0, -1.5, -3]} />;
+};
 
 export default Earth;

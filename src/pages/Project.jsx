@@ -38,38 +38,24 @@ const Project = () => {
         <Frame
           id="01"
           name={`Galaxy`}
-          // author="Omar Faruq Tawsif"
           bg="black"
           position={[-1.15, 0, 0]}
           rotation={[0, 0.5, 0]}
         >
-          {/* <Gltf
-            src="solar.glb"
-            scale={1}
-            position={[0, -0.4, -3]}
-            rotation={[0.4, 0, -0.2]}
-          /> */}
           <SolarAnimatedModel />
         </Frame>
-        <Frame
-          id="02"
-          name={`Orrery`}
-          //  author="Omar Faruq Tawsif"
-        >
+        <Frame id="02" name={`Orrery`}>
           <Environment
             files="Galaxy.hdr"
-            // ground={{ scale: 100 }}
             backgroundRotation={[0, Math.PI / 2, 0]}
             environmentIntensity={2}
             environmentRotation={[0, Math.PI / 2, 0]}
           />
           <AnimatedModel />
-          {/* <Gltf src="Orrery1.glb" position={[0, -1.5, -3]} /> */}
         </Frame>
         <Frame
           id="03"
           name="Earth"
-          // author="Omar Faruq Tawsif"
           bg="#d1d1ca"
           position={[1.15, 0, 0]}
           rotation={[0, -0.5, 0]}
@@ -92,7 +78,6 @@ const Project = () => {
       >
         <a
           style={{ position: "absolute", top: 90, left: 40, fontSize: "13px" }}
-          // href="/Orrery-Web-App/Project"
           className="blue-gradient_text"
           goback="true"
           onClick={() => setLocation("/")}
@@ -121,10 +106,6 @@ const AnimatedModel = () => {
 
   // Rotate the model on each frame
   useFrame(() => {
-    // if (modelRef.current) {
-    //   modelRef.current.rotation.y += 0.01;
-    // }
-
     Object.values(actions).forEach((action) => {
       action.setEffectiveTimeScale(0.1); // Slow down the animation speed by half
       action.play();
@@ -141,10 +122,6 @@ const SolarAnimatedModel = () => {
 
   // Rotate the model on each frame
   useFrame(() => {
-    // if (modelRef.current) {
-    //   modelRef.current.rotation.y += 0.01;
-    // }
-
     Object.values(actions).forEach((action) => {
       action.setEffectiveTimeScale(0.1); // Slow down the animation speed by half
       action.play();
@@ -169,10 +146,6 @@ const AnimatedMod = () => {
 
   // Rotate the model on each frame
   useFrame(() => {
-    if (modelRef.current) {
-      // modelRef.current.rotation.y += 0.01;
-    }
-
     Object.values(actions).forEach((action) => {
       action.setEffectiveTimeScale(0.1); // Slow down the animation speed by half
       action.play();
