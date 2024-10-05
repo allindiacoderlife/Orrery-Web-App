@@ -77,7 +77,7 @@ export function Overlay() {
                   <NavLink
                     className="buttonbtn"
                     style={{ background: snap.color }}
-                    to='/SolarSystem3D'
+                    to='/Orrery-Web-App/SolarSystem3D'
                     // onClick={() => (state.intro = false)}
                   >
                     Get Started 
