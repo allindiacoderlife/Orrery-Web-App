@@ -20,8 +20,7 @@ export function Overlay() {
     exit: { x: -100, opacity: 0, transition: { ...transition, delay: 0 } },
   };
   return (
-    <div
-      // className="bg-white"
+    <section
       style={{
         position: "absolute",
         top: 0,
@@ -30,12 +29,6 @@ export function Overlay() {
         height: "100%",
       }} 
     >
-      {/* <motion.header initial={{ opacity: 0, y: -100 }} animate={{ opacity: 1, y: 0 }} transition={transition}>
-        <Logo width="40" height="40" />
-        <motion.div animate={{ x: snap.intro ? 0 : 100, opacity: snap.intro ? 1 : 0 }} transition={transition}>
-          <AiOutlineShopping size="3em" />
-        </motion.div>
-      </motion.header> */}
       <AnimatePresence>
         {snap.intro ? (
           <motion.section key="main" {...config}>
@@ -78,79 +71,19 @@ export function Overlay() {
                     className="buttonbtn"
                     style={{ background: snap.color }}
                     to='/Orrery-Web-App/SolarSystem3D'
-                    // onClick={() => (state.intro = false)}
                   >
                     Get Started 
-                    {/* <AiOutlineHighlight size="1.3em" /> */}
                   </NavLink>
                 </motion.div>
               </div>
             </div>
           </motion.section>
         ) : (
-          <motion.section key="custom" {...config}>
-            <Customizer />
-          </motion.section>
+          null
         )}
       </AnimatePresence>
-    </div>
+    </section>
   );
 }
 
-function Customizer() {
-  const snap = useSnapshot(state);
-  return (
-    <div className="customizer">
-      {/* <div className="color-options">
-        {snap.colors.map((color) => (
-          <div
-            key={color}
-            className={`circle`}
-            style={{ background: color }}
-            onClick={() => (state.color = color)}
-          ></div>
-        ))}
-      </div> */}
-      {/* <div className="decals">
-        <div className="decals--container">
-          {snap.decals.map((decal) => (
-            <div
-              key={decal}
-              className={`decal`}
-              onClick={() => (state.decal = decal)}
-            >
-              <img src={decal + "_thumb.png"} alt="brand" />
-            </div>
-          ))}
-        </div>
-      </div> */}
-      {/* <button
-        className="share"
-        style={{ background: snap.color }}
-        onClick={() => {
-          const link = document.createElement("a");
-          link.setAttribute("download", "canvas.png");
-          link.setAttribute(
-            "href",
-            document
-              .querySelector("canvas")
-              .toDataURL("image/png")
-              .replace("image/png", "image/octet-stream")
-          );
-          link.click();
-        }}
-      >
-        DOWNLOAD
-        <AiFillCamera size="1.3em" />
-      </button> */}
-      <button
-        className="exit"
-        style={{ background: snap.color }}
-        onClick={() => (state.intro = true)}
-      >
-        GO BACK
-        <AiOutlineArrowLeft size="1.3em" />
-      </button>
-    </div>
-  );
-}
+export default Overlay;

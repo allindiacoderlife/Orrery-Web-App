@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Solar3D.css";
 
 const Solar3D = () => {
-  const [isactive, setActive] = useState({});
-
   const [activeSun, setActiveSun] = useState(false);
   const [activeMercury, setActiveMercury] = useState(false);
   const [activeVenus, setActiveVenus] = useState(false);
@@ -545,7 +543,7 @@ const Solar3D = () => {
   ]);
 
   return (
-    <div className="body1">
+    <section className="body1">
       <div className="content1">
         <div className="circles1">
           <div className="mercury_circle"></div>
@@ -950,7 +948,7 @@ const Solar3D = () => {
           </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

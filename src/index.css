@@ -21,7 +21,7 @@
 .home{
   height: 100vh;
   width: 100%;
-  position: relative;
+  position: fixed
 }
 .project{
   height: 100vh;

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Route , BrowserRouter as Router, Routes} from 'react-router-dom'
 import Navbar from './components/Navbar'
-import { Project , Home , Solar3D , Main} from './pages'
+import { Project , Home , Solar3D} from './pages'
 
 const App = () => {
   return (
@@ -11,7 +11,6 @@ const App = () => {
       <Routes>
         <Route path="/Orrery-Web-App" element={<Home />} />
         <Route path="/Orrery-Web-App/Project" element={<Project />} />
-        {/* <Route path="/Orrery-Web-App/SolarSystem" element={<Solar/>} /> */}
         <Route path="/Orrery-Web-App/SolarSystem3D" element={<Solar3D/>} />
       </Routes>
     </Router>
