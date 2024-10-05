@@ -37,7 +37,7 @@ const Project = () => {
         <color attach="background" args={["#f0f0f0"]} />
         <Frame
           id="01"
-          name={`Gala\nxy`}
+          name={`Galaxy`}
           // author="Omar Faruq Tawsif"
           bg="black"
           position={[-1.15, 0, 0]}
@@ -53,7 +53,7 @@ const Project = () => {
         </Frame>
         <Frame
           id="02"
-          name={`Orre\nry`}
+          name={`Orrery`}
           //  author="Omar Faruq Tawsif"
         >
           <Environment
@@ -212,7 +212,7 @@ function Frame({
     <group {...props}>
       <Text
         font={suspend(medium).default}
-        fontSize={0.3}
+        fontSize={0.25}
         anchorY="top"
         anchorX="left"
         lineHeight={0.8}

@@ -8,6 +8,7 @@ import {
 } from "react-icons/ai";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
+import { NavLink } from "react-router-dom";
 import './Overlay.css';
 
 export function Overlay() {
@@ -73,13 +74,15 @@ export function Overlay() {
                     <strong> Planet Earth.</strong>
                     Get Started Now.
                   </p>
-                  <button
+                  <NavLink
                     className="buttonbtn"
                     style={{ background: snap.color }}
-                    onClick={() => (state.intro = false)}
+                    to='/SolarSystem3D'
+                    // onClick={() => (state.intro = false)}
                   >
-                    Get Started <AiOutlineHighlight size="1.3em" />
-                  </button>
+                    Get Started 
+                    {/* <AiOutlineHighlight size="1.3em" /> */}
+                  </NavLink>
                 </motion.div>
               </div>
             </div>

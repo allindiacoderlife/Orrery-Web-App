@@ -1,6 +1,15 @@
-import React from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 const Navbar = () => {
+  const [active, setActive] = useState(false);
+  const [isHome, setIsHome] = useState(true);
+  const [isProject, setIsProject] = useState(false);
+  const [isSolar, setIsSolar] = useState(false);
+  const handleClick = (name) => {
+    setIsHome(name === "Home");
+    setIsProject(name === "Project");
+    setIsSolar(name === "Solar");
+  };
   return (
     <header className="header">
       <NavLink
@@ -14,25 +23,22 @@ const Navbar = () => {
       <nav className="flex text-lg gap-7 font-medium">
         <NavLink
           to="/Orrery-Web-App/"
-          className={({ isActive }) =>
-            isActive ? "blue-gradient_text" : "text-blue-200"
-          }
+          onClick={() => handleClick("Home")}
+          className={isHome ? "blue-gradient_text" : "text-blue-200"}
         >
           Home
         </NavLink>
         <NavLink
-          to="/SolarSystem3D"
-          className={({ isActive }) =>
-            isActive ? "blue-gradient_text" : "text-blue-200"
-          }
+          to="/Orrery-Web-App/SolarSystem3D"
+          onClick={() => handleClick("Solar")}
+          className={isSolar ? "blue-gradient_text" : "text-blue-200"}
         >
           Solar 3D
         </NavLink>
         <NavLink
-          to="/Project"
-          className={({ isActive }) =>
-            isActive ? "blue-gradient_text" : "text-blue-200"
-          }
+          to="/Orrery-Web-App/Project"
+          onClick={() => handleClick("Project")}
+          className={isProject ? "blue-gradient_text" : "text-blue-200"}
         >
           Projects
         </NavLink>
